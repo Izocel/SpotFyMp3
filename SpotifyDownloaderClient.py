@@ -4,7 +4,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from mutagen.mp3 import MP3
 from mutagen.id3 import ID3, APIC, error
 from mutagen.easyid3 import EasyID3
-import youtube_dl
+import yt_dlp as YoutubeDL
 import urllib.request
 import ssl
 import os
@@ -126,8 +126,8 @@ class SpotifyDownloaderClient:
         }
 
         try:
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                a = ydl.download([link])    #TODO: try fetching all the links first and then download all the songs afterwards, might be faster?
+            with YoutubeDL.YoutubeDL(ydl_opts) as ydl:
+                a = ydl.download([link])
             return True
         except Exception:
             return False

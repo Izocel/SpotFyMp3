@@ -1,12 +1,12 @@
 {
   "name": "SpotyMp3",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "activate": ".venv\\Scripts\\Activate",
     "virtualize": "python3 -m venv .venv && npm i",
+    "update": "rm -rf .venv && npm run virtualize",
     "freeze": ".venv\\Scripts\\pip.exe freeze > requirements.txt",
-    "postinstall": ".venv\\Scripts\\pip.exe install -r requirements.txt",
+    "postinstall": ".venv\\Scripts\\pip.exe install -U -r requirements.txt",
     "start": ".venv\\Scripts\\python.exe SpotifyDownloaderUI.py"
   },
   "author": "",

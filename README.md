@@ -2,7 +2,7 @@
 
 ## Set-up
 1. Clone this repository
-2 `npm run virtualize`
+2. `npm run virtualize`
 3. Download the ffmpeg and ffprobe executables from http://ffmpeg.org/download.html and place them in your Python path (must keep file versions up to date)
 4. Setup your playlists data in settings.json
 

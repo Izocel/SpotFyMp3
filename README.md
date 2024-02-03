@@ -2,12 +2,12 @@
 
 ## Set-up
 1. Clone this repository
-2. Install all the required libraries from requirements.txt into the Python path (must keep libraries up to date)
+2 `npm run virtualize`
 3. Download the ffmpeg and ffprobe executables from http://ffmpeg.org/download.html and place them in your Python path (must keep file versions up to date)
 4. Setup your playlists data in settings.json
 
 ## Usage
-1. Run the SpotifyDownloaderUI.py file with python3 (I wrote the program using Python 3.8.1)
+1. `npm run start`
 2. select a playlist to update it or updateAll at first
 3. The output folder for downloaded playlists will be created adjacent to the location of the Python file
 

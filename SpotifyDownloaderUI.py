@@ -1,3 +1,4 @@
+import json
 import os
 
 from SpotifyDownloaderClient import SpotifyDownloaderClient
@@ -12,13 +13,21 @@ class SpotifyDownloaderUI:
 
         if not os.path.exists(self.cwd + "/output/"):   #make sure the output dir is there
             os.makedirs(self.cwd + "/output/")
+        
+        with open('playlists.json') as f:
+            playlist = json.load(f)
+            
+        for playlistName, listId in playlist.items():
+            self.createPlaylist((listId, playlistName))
+            
+        self.updateAllPlaylists()
 
     def printHelpMessage(self):
         desc = "Commands (case insensitive):\n"
         
         desc += "  help                                     -- prints out a list of commands\n"
         
-        desc += "  createPlaylist [URI] [playlist_name]     -- create new playlist [playlist_name] with the corresponding Spotify [URI]\n"
+        desc += "  createPlaylist [listID] [playlist_name]  -- create new playlist [playlist_name] with the corresponding Spotify [URI]\n"
         desc += "  setPlaylist [playlist_name]              -- set current playlist to [playlist_name]\n"
         desc += "  setURI [URI]                             -- sets the current playlist URI located in uri.txt to [URI]\n"
 

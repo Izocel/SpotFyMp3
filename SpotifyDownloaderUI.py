@@ -18,8 +18,9 @@ class SpotifyDownloaderUI:
             playlist = json.load(f)
             
         for playlistName, listId in playlist.items():
-            self.createPlaylist((listId, playlistName))
+            self.createPlaylist((listId, playlistName), True)
             
+        self.printPlaylists()
         self.updateAllPlaylists()
 
     def printHelpMessage(self):
@@ -49,18 +50,19 @@ class SpotifyDownloaderUI:
         
         print(desc)
 
-    def createPlaylist(self, args):
+    def createPlaylist(self, args, skipLog=True):
         name = " ".join(args[1:])      # reform original command to grab all the words seperated by spaces in the playlist name
 
-        if name in os.listdir(self.cwd + "/output/"):
+        if name in os.listdir(self.cwd + "/output/") and not skipLog:
             SpotifyDownloaderClient.printErrorMessage("This playlist name is already in use, please choose another one to avoid overwriting the existing playlist")
         elif name == "":
             SpotifyDownloaderClient.printErrorMessage("Please input a valid playlist name")
         else:
             self.current_playlist = name
             self.setURI(args[0])
-        
-        self.printPlaylists()
+            
+        if not skipLog:
+            self.printPlaylists()
 
     def setPlaylist(self, args):
         name = " ".join(args)      # reform original command to grab all the words seperated by spaces in the playlist name

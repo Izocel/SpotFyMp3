@@ -154,14 +154,14 @@ class SpotifyDownloaderClient:
         return individual_songs_temp
 
     def retrieveSongData(self, uri, playlist_name):
-        with open('settings.json') as f:
-            Settings = json.load(f)
+        with open('playlists.json') as f:
+            playlist = json.load(f)
     
         offset = 0
         individual_songs = []
         song_data = {}
         
-        playlist_id = Settings['spotify']["playlist"][playlist_name]
+        playlist_id = playlist[playlist_name]
         results = self.sp.user_playlist_tracks("RandoUser", playlist_id, offset=offset, fields="next,items") #For some reason the user does not matter even though the method requires it...
         individual_songs += results['items']
 
